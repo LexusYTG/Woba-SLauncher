@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Woba S Launcher</string>
+    <string name="accessibility_service_description">Permite bloquear la pantalla con doble toque en el Start y con el tile de bloqueo.</string>
+    <string name="ime_label">WOBA keyboard</string>
+    <string name="assistant_label">WOBA assistant</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<voice-interaction-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:sessionService="com.woba.slauncher.assist.WobaVoiceInteractionSessionService"
+    android:recognitionService="com.woba.slauncher.assist.WobaRecognitionService"
+    android:settingsActivity="com.woba.slauncher.KeyboardSetupActivity"
+    android:supportsAssist="true"
+    android:supportsLaunchVoiceAssistFromKeyguard="false" />

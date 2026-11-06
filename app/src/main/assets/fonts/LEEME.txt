@@ -1,0 +1,7 @@
+Pone aca las fuentes (ttf u otf) con estos nombres:
+  wp_light.ttf     (peso 300, el estilo principal Metro)
+  wp_regular.ttf
+  wp_semibold.ttf
+  wp_bold.ttf
+Las que falten se omiten. Sin ninguna se usa la sans-serif del sistema.
+Alternativa libre parecida a Segoe: Selawik (SIL OFL).
