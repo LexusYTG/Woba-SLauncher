@@ -1,6 +1,16 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
 }
+
+// Firma de release: se lee de keystore.properties (local, fuera de git) o de variables de entorno (CI).
+// Si no hay ninguna, assembleRelease genera un APK sin firmar.
+val keystoreProps = Properties().apply {
+    val f = rootProject.file("keystore.properties")
+    if (f.exists()) f.inputStream().use { load(it) }
+}
+fun signing(key: String, env: String): String? = keystoreProps.getProperty(key) ?: System.getenv(env)
 
 android {
     namespace = "com.woba.slauncher"
@@ -10,13 +20,26 @@ android {
         applicationId = "com.woba.slauncher"
         minSdk = 26
         targetSdk = 34
-        versionCode = 2
-        versionName = "2.0"
+        versionCode = 6
+        versionName = "6.0"
+    }
+
+    val storePath = signing("storeFile", "KEYSTORE_FILE")
+    signingConfigs {
+        if (storePath != null) {
+            create("release") {
+                storeFile = rootProject.file(storePath)
+                storePassword = signing("storePassword", "KEYSTORE_PASSWORD")
+                keyAlias = signing("keyAlias", "KEY_ALIAS")
+                keyPassword = signing("keyPassword", "KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            if (storePath != null) signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
