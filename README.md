@@ -4,7 +4,7 @@ Launcher para Android que recrea la experiencia de **Windows Phone 8.1 / Windows
 mosaicos, lista de apps, Centro de actividades, Ajustes y un simulador de apps propias (Cámara Lumia, Fotos, etc.).
 Escrito en **Java puro** (Views + Canvas propios), sin Kotlin, sin Compose y sin dependencias de AndroidX.
 
-> Estado: en desarrollo. Nada de esto se ha probado todavía en un dispositivo real; el código se revisa solo por sintaxis.
+> Estado: en desarrollo. En progreso
 
 ## Qué incluye
 - **Launcher** estilo WP/W10M: mosaicos animados, temas claro/oscuro y color de acento.
@@ -13,8 +13,6 @@ Escrito en **Java puro** (Views + Canvas propios), sin Kotlin, sin Compose y sin
   Se ajusta en *Ajustes > Extras > Keyboard*.
 - **Cámara** real (Camera2) con la interfaz de Lumia Camera y *Rich Capture* (HDR / noche).
 - Ajustes, Centro de actividades, simulador de apps y renombrado de marcas en *Extras*.
-
-Detalles de diseño y de lo que está o no verificado: [`MAPEO.md`](MAPEO.md).
 
 ## Compilar
 Requisitos: JDK 17 y Android SDK 34.
