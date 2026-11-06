@@ -1,29 +1,25 @@
 # Woba S Launcher
 
-Launcher para Android que recrea la experiencia de **Windows Phone 8.1 / Windows 10 Mobile**: pantalla de inicio con
-mosaicos, lista de apps, Centro de actividades, Ajustes y un simulador de apps propias (Cámara Lumia, Fotos, etc.).
-Escrito en **Java puro** (Views + Canvas propios), sin Kotlin, sin Compose y sin dependencias de AndroidX.
+Launcher para Android que recrea la interfaz de **Windows Phone 8.1 / Windows 10 Mobile**: Start con mosaicos, lista de
+apps, Centro de actividades, pantalla de bloqueo, Configuración, asistente Cortana, teclado propio y un conjunto de apps
+simuladas. Escrito en Java con Views y Canvas propios, sin AndroidX ni otras dependencias.
 
-> Estado: en desarrollo. En progreso
-
-## Qué incluye
-- **Launcher** estilo WP/W10M: mosaicos animados, temas claro/oscuro y color de acento.
-- **Cortana** como asistente del dispositivo (mantener pulsado Home), con voz y Gemini opcional.
-- **Teclado** clon del de Windows Phone (IME propio): autocorrección, sugerencias, dictado por voz, punto de control del cursor.
-  Se ajusta en *Ajustes > Extras > Keyboard*.
-- **Cámara** real (Camera2) con la interfaz de Lumia Camera y *Rich Capture* (HDR / noche).
-- Ajustes, Centro de actividades, simulador de apps y renombrado de marcas en *Extras*.
+- Paquete: `com.woba.slauncher` · minSdk 26 · targetSdk 34 · versión 1.0.1
+- Licencia: ver [LICENSE](LICENSE)
+- Lista completa de funciones y apps: [docs/FUNCIONES.md](docs/FUNCIONES.md)
 
 ## Compilar
 Requisitos: JDK 17 y Android SDK 34.
 
 ```bash
-gradle assembleDebug      # APK de prueba
-gradle assembleRelease    # APK de release (firmado si hay key, ver abajo)
+gradle assembleDebug     # APK de prueba
+gradle assembleRelease   # APK de release (firmado si hay key)
 ```
 
+El APK queda en `app/build/outputs/apk/release/`.
+
 ## Firmar el release
-1. Crear la key (una sola vez; guardala y no la subas al repositorio):
+1. Crear la key (una vez; no subirla al repositorio):
    ```bash
    keytool -genkeypair -v -keystore woba-release.jks -alias woba -keyalg RSA -keysize 2048 -validity 10000
    ```
@@ -34,8 +30,16 @@ gradle assembleRelease    # APK de release (firmado si hay key, ver abajo)
    keyAlias=woba
    keyPassword=...
    ```
-3. En GitHub Actions: añadir los secretos `KEYSTORE_BASE64` (`base64 -w0 woba-release.jks`), `KEYSTORE_PASSWORD`, `KEY_ALIAS` y
-   `KEY_PASSWORD`. Al subir un tag `vX.Y` el workflow compila, firma y publica el APK en *Releases*.
+3. En GitHub Actions, añadir los secretos `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS` y `KEY_PASSWORD`.
+   Al subir un tag `vX.Y.Z`, el workflow `release.yml` compila y publica el APK en *Releases*. Sin secretos el APK sale sin firmar.
+
+## Permisos opcionales
+Se piden solo al usar la función que los necesita. Para que las acciones rápidas cambien Wi-Fi, Bluetooth, etc. sin abrir
+paneles de Android:
+
+```bash
+adb shell pm grant com.woba.slauncher android.permission.WRITE_SECURE_SETTINGS
+```
 
 ## Fuentes
-`app/src/main/assets/fonts/wp_light|regular|semibold|bold.ttf` (Selawik).
+`app/src/main/assets/fonts/wp_light|regular|semibold|bold.ttf` (Selawik, licencia SIL OFL).

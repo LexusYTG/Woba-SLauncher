@@ -20,8 +20,8 @@ android {
         applicationId = "com.woba.slauncher"
         minSdk = 26
         targetSdk = 34
-        versionCode = 6
-        versionName = "6.0"
+        versionCode = 7
+        versionName = "1.0.1"
     }
 
     val storePath = signing("storeFile", "KEYSTORE_FILE")
