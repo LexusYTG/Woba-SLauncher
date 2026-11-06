@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Una "W" de trazo grueso dentro de la zona segura del icono adaptable (108dp, contenido en el centro). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M32,38 L42.5,72 L54,46 L65.5,72 L76,38"
+        android:strokeWidth="6.5"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineJoin="miter"
+        android:strokeLineCap="butt"
+        android:fillColor="#00000000" />
+</vector>
